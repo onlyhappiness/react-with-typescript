@@ -1,53 +1,27 @@
-## React with Typescript
+# React + TypeScript + Vite
 
-<br>
-<br>
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-### React with Babel [ es6, jsx ]
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- module bundler
+## Expanding the ESLint configuration
 
-  - webpack 2
-  - webpack-dev-server
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-<br>
+- Configure the top-level `parserOptions` property like this:
 
-- loader
+```js
+   parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+   },
+```
 
-  - babel-loader
-    - babel-core
-    - babel-preset-env
-    - babel-plugin-transform-react-jsx
-
-- react
-  - react
-  - react-dom
-
-<br>
-<br>
-
-### React with Typescript [ ts, tsx ]
-
----
-
-- module bundler
-
-  - webpack 3
-  - webpack-dev-server
-
-- loader
-
-  - ts-loader
-    - typescript
-  - tslint-loader
-
-    - tslint
-    - tslint-react
-
-  - source-map-loader
-
-- react
-  - react, @types/react
-  - react-dom, @types/react-dom
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
